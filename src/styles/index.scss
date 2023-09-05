@@ -1,0 +1,82 @@
+@use './variables.module.scss' as *;
+@use './sidebar.scss' as *;
+@use './transition.scss' as *;
+@use './colors.scss' as *;
+// import dark theme
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+
+body {
+  height: 100%;
+  margin: 0;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB,
+    Microsoft YaHei, Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+  color: var(--ep-text-color-regular);
+  background-color: var(--ep-bg-color);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.clearfix {
+  &:after {
+    display: block;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+  }
+}
+
+//main-container全局样式
+.main-container {
+  position: relative;
+  min-height: 100%;
+
+  & .app-container {
+    overflow-y: auto;
+    height: calc(100vh - #{$navbarHeight});
+    padding: 20px;
+    background-color: var(--ep-bg-color-page);
+  }
+}

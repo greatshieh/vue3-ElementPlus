@@ -1,0 +1,13 @@
+html {
+  // 侧边栏菜单颜色定义
+  --ep-menu-text-color: var(--ep-text-color-regular);
+  --ep-menu-active-color: var(--el-color-primary);
+  --ep-menu-active-bg-color: var(--el-color-primary-light-9);
+  --ep-menu-bg-color: var(--ep-bg-color);
+  --ep-menu-hover-bg-color: var(--ep-bg-color);
+  --ep-menu-sub-text-color: var(--el-text-color-regular);
+  --ep-menu-sub-active-color: var(--el-color-primary);
+  --ep-menu-sub-active-bg-color: var(--el-color-primary-light-9);
+  --ep-menu-sub-bg-color: var(--ep-bg-color);
+  --ep-menu-sub-hover-bg-color: var(--ep-bg-color);
+}

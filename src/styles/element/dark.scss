@@ -1,0 +1,92 @@
+// 定义暗黑模式主题色
+@use 'sass:map';
+@use '../mixins/mixins.scss' as *;
+
+// 自定义主题色
+$--colors: (
+  'primary': (
+    'base': #1677ff
+  ),
+  'success': (
+    'base': #52c41a
+  ),
+  'warning': (
+    'base': #faad14
+  ),
+  'danger': (
+    'base': #ff4d4f
+  ),
+  'error': (
+    'base': #ed4014
+  ),
+  'info': (
+    'base': #bfbfbf
+  )
+);
+
+$text-color: () !default;
+$text-color: map.merge(
+  (
+    'primary': #e5eaf3,
+    'regular': #cfd3dc,
+    'secondary': #a3a6ad,
+    'placeholder': #8d9095,
+    'disabled': #6c6e72
+  ),
+  $text-color
+);
+
+$border-color: () !default;
+$border-color: map.merge(
+  (
+    '': #4c4d4f,
+    'light': #414243,
+    'lighter': #363637,
+    'extra-light': #2b2b2c,
+    'dark': #58585b,
+    'darker': #636466
+  ),
+  $border-color
+);
+
+$fill-color: () !default;
+$fill-color: map.merge(
+  (
+    '': #303030,
+    'light': #262727,
+    'lighter': #1d1d1d,
+    'extra-light': #191919,
+    'dark': #39393a,
+    'darker': #424243,
+    'blank': transparent
+  ),
+  $fill-color
+);
+
+// Background
+$bg-color: () !default;
+$bg-color: map.merge(
+  (
+    '': #002140,
+    'page': #304156,
+    'overlay': #1d1e1f
+  ),
+  $bg-color
+);
+
+@forward 'element-plus/theme-chalk/src/dark/var.scss' with (
+  // 覆盖暗黑模式主题色
+  $colors: $--colors
+);
+
+html.dark {
+  // color-scheme
+  // Background --ep-bg-color-#{$type}
+  @include set-component-css-var('bg-color', $bg-color);
+  // --ep-text-color-#{$type}
+  @include set-component-css-var('text-color', $text-color);
+  // --ep-border-color-#{$type}
+  @include set-component-css-var('border-color', $border-color);
+  // Fill --ep-fill-color-#{$type}
+  @include set-component-css-var('fill-color', $fill-color);
+}

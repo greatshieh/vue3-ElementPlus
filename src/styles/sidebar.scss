@@ -1,0 +1,191 @@
+@use './variables.module.scss' as *;
+@use './mixins/functions.scss' as *;
+#app {
+  .el-aside {
+    transition: width 0.28s;
+  }
+
+  .sidebar-container {
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: $sideBarWidth !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1001;
+    font-size: 0px;
+    transition: width 0.28s;
+
+    // reset element-ui css
+    & .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
+    }
+
+    & .scrollbar-wrapper {
+      overflow-x: hidden !important;
+    }
+
+    & .el-scrollbar__bar.is-vertical {
+      right: 0px;
+    }
+
+    & .el-scrollbar {
+      height: 100%;
+    }
+
+    &.has-logo > .el-scrollbar {
+      height: calc(100% - 50px);
+    }
+
+    & .is-horizontal {
+      display: none;
+    }
+
+    & a {
+      display: inline-block;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    & .svg-icon {
+      margin-right: 16px;
+    }
+
+    & .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+
+    & .el-menu {
+      border: none;
+      height: 100%;
+      width: 100% !important;
+      background-color: var(--ep-bg-color);
+
+      & .el-menu-item {
+        color: getCssVar('menu', 'text-color') !important;
+
+        &.is-active {
+          background-color: getCssVar('menu', 'active', 'bg-color') !important;
+          color: getCssVar('menu', 'active-color') !important;
+          border-right: 5px solid var(--el-color-primary);
+          transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        &:not(.is-active):hover {
+          color: getCssVar('menu', 'active-color') !important;
+          background-color: getCssVar('menu', 'hover', 'bg-color') !important;
+        }
+      }
+    }
+
+    // menu hover
+    .sub-menu-title-noDropdown,
+    .el-sub-menu__title {
+      color: getCssVar('menu', 'text-color') !important;
+      &:hover {
+        color: getCssVar('menu', 'active-color') !important;
+        background-color: getCssVar(
+          'menu',
+          'sub',
+          'hover',
+          'bg-color'
+        ) !important;
+      }
+    }
+
+    & .is-active > .el-sub-menu__title {
+      color: getCssVar('menu', 'sub', 'active-color') !important;
+    }
+
+    & .nest-menu .el-sub-menu > .el-sub-menu__title,
+    & .el-sub-menu .el-menu-item {
+      min-width: $sideBarWidth !important;
+      color: getCssVar('menu', 'text-color') !important;
+      background-color: getCssVar('menu', 'sub', 'bg-color') !important;
+
+      &.is-active {
+        color: getCssVar('menu', 'sub', 'active-color') !important;
+        background-color: getCssVar(
+          'menu',
+          'sub',
+          'active',
+          'bg-color'
+        ) !important;
+      }
+
+      &:not(.is-active):hover {
+        color: getCssVar('menu', 'sub', 'active-color') !important;
+        background-color: getCssVar(
+          'menu',
+          'sub',
+          'hover',
+          'bg-color'
+        ) !important;
+      }
+    }
+  }
+
+  .hideSidebar {
+    & .sidebar-container {
+      width: $sideBarCollapsedWidth !important;
+    }
+
+    & .sub-menu-title-noDropdown {
+      padding: 0 !important;
+      position: relative;
+
+      & .el-tooltip {
+        padding: 0 !important;
+
+        & .svg-icon {
+          margin-left: 20px;
+        }
+
+        & .sub-el-icon {
+          margin-left: 19px;
+        }
+      }
+    }
+
+    .el-sub-menu {
+      overflow: hidden;
+
+      & > .el-sub-menu__title {
+        padding: 0 !important;
+
+        .svg-icon {
+          margin-left: 20px;
+        }
+
+        .sub-el-icon {
+          margin-left: 19px;
+        }
+
+        .el-sub-menu__icon-arrow {
+          display: none;
+        }
+      }
+    }
+
+    .el-menu--collapse {
+      .el-sub-menu {
+        & > .el-sub-menu__title {
+          & > span {
+            height: 0;
+            width: 0;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+
+  .el-menu--collapse .el-menu .el-sub-menu {
+    min-width: $sideBarWidth !important;
+  }
+}
